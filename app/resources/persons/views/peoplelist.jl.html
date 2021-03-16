@@ -1,0 +1,11 @@
+<h1>Person List: $( length(@vars(:people)) )</h1>
+<h4>Revised</h4>
+
+<ul>
+  <% @foreach(@vars(:people)) do person %>
+    <li>
+      $(person.first) $(person.last)<br/>
+      link to id: $(person.id)
+    </li>
+  <% end %>
+</ul>
