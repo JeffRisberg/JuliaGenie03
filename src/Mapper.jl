@@ -32,6 +32,13 @@ function create!(book)
 end
 
 function update(book)
+    for x in books
+        if x.id == book.id
+            x.title = book.title
+            x.author = book.author
+            x.pages = book.pages
+        end
+    end
 end
 
 function delete(id)

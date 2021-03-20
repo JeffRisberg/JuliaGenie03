@@ -33,9 +33,6 @@ route("/books", method = GET, named = :getBooksNoParam) do
 end
 
 route("/books", method = POST) do
-  @show jsonpayload()
-  @show rawpayload()
-
   title = jsonpayload()["title"]
   author = jsonpayload()["author"]
   pages = jsonpayload()["pages"]
@@ -45,15 +42,13 @@ route("/books", method = POST) do
   json("New Book $(title) $(author) $(pages)")
 end
 
-route("/books", method = PUT) do
-  @show jsonpayload()
-  @show rawpayload()
-
-  id = jsonpayload()["id"]
+route("/books/:id::Int64", method = PUT) do
+  id = payload(:id)
   title = jsonpayload()["title"]
   author = jsonpayload()["author"]
   pages = jsonpayload()["pages"]
   book = Book(title, author, pages)
+  book.id = id
   Mapper.update(book)
 
   json("Updated Book $(title) $(author) $(pages)")
