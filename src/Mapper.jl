@@ -18,7 +18,7 @@ function get(id::Int64)
             return book
         end
     end
-    return null
+    return nothing
 end
 
 function getAll()
@@ -35,6 +35,7 @@ function update(book)
 end
 
 function delete(id)
+    deleteat!(books, findall(x->x.id==id, books))
 end
 
 end # module

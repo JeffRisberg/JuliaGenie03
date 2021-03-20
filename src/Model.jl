@@ -16,7 +16,7 @@ end
 
 ==(x::Book, y::Book) = x.id == y.id
 Book() = Book(0, "", "", 0, 0)
-Bool(title, author, pages) = Book(0, title, author, pages, 0)
+Book(title, author, pages) = Book(0, title, author, pages, 0)
 StructTypes.StructType(::Type{Book}) = StructTypes.Mutable()
 
 end # module
